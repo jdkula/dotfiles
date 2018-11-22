@@ -181,7 +181,6 @@ highlight LineNr ctermfg=244 ctermbg=233
 set colorcolumn=100
 highlight ColorColumn ctermbg=233
 
-
 " == YCM Colors == "
 highlight YcmErrorSign ctermfg=9 ctermbg=235
 highlight YcmWarningSign ctermfg=11 ctermbg=235
@@ -190,6 +189,9 @@ highlight YcmErrorSection cterm=underline ctermfg=9 ctermbg=233
 highlight YcmWarningSection cterm=underline ctermfg=227 ctermbg=233
 
 highlight SignColumn ctermbg=232
+
+" == Chromatica Colors == "
+highlight chromaticaLinkage ctermfg=99
 
 " == Ctrl+P Colors == "
 highlight Pmenu ctermfg=15 ctermbg=235
@@ -200,3 +202,4 @@ highlight PmenuSel ctermfg=15 ctermbg=24
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=232
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=233
 highlight ExtraWhitespace ctermbg=52
+

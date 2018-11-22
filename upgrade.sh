@@ -31,9 +31,11 @@ function recho {
 
 function clean {
   secho "==== Cleaning up for installation... ==="
-  vecho "+ Removing .local"
-  rm -rf $HOME/.local
-  vecho "+ Removing ZSH"
+  if [[ $REMOVE_LOCAL = "true" ]]; then
+    vecho "+ Removing .local"
+    rm -rf $HOME/.local
+  fi
+  vecho "+ Removing Oh My ZSH"
   rm -rf $HOME/.oh-my-zsh
   vecho "+ Removing pv"
   rm -rf $HOME/pv
@@ -278,11 +280,12 @@ function usage {
   echo "  - chromatica"
   echo "- gdbdash"
   echo "- ...and a tmux configuration file."
-  echo "Usage: ./upgrade.sh [-f] [-r] [-s] [-u]"
+  echo "Usage: ./upgrade.sh [-f] [-r] [-s] [-u] [-l]"
   echo "-f : Force upgrade, even if it would overwrite a backup."
   echo "-r : Backup current state, then restore."
   echo "-u : Delete all files and folders used by this application WITHOUT backing up, then exit."
   echo "-s : Skip backup"
+  echo "-l : Delete .local (instead of merging)"
   exit -1
 }
 
@@ -324,8 +327,9 @@ OVERWRITE_BACKUP=false
 RESTORE=false
 BACKUP=true
 UNINSTALL=false
+REMOVE_LOCAL=false
 
-while getopts ":frsu" opt; do
+while getopts ":frsul" opt; do
   case ${opt} in
     f )
       OVERWRITE_BACKUP=true
@@ -338,6 +342,9 @@ while getopts ":frsu" opt; do
       ;;
     u )
       UNINSTALL=true
+      ;;
+    l )
+      REMOVE_LOCAL=true
       ;;
     \? )
       usage
