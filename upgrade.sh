@@ -136,8 +136,8 @@ function vundle {
 
   secho "==== Installing vim Plugins ===="
   vecho "+ Installing (please wait, this may take a while!)"
-  echo "Installing vim plugins (please wait, this may take a long time!) | \
-    "$HOME/.local/bin/nvim +PluginInstall +qall
+  echo "Installing vim plugins (please wait, this may take a long time!)" | \
+    $HOME/.local/bin/nvim +"set wrap" +PluginInstall +"qall!"
   $HOME/.local/bin/nvim +UpdateRemotePlugins +qall
 }
 
@@ -196,8 +196,8 @@ function settmux {
 function bearinstall {
   secho "==== Installing Bear ===="
   vecho "+ Downloading Bear"
-  git clone "https://github.com/rizsotto/Bear.git" Bear
-  cd Bear
+  git clone "https://github.com/rizsotto/Bear.git" $HOME/Bear
+  cd $HOME/Bear
   vecho "+ Building Bear"
   rm CMakeLists.txt
   wget -q --show-progress "https://raw.githubusercontent.com/jdkula/dotfiles/master/upgradeFiles/CMakeLists.txt" -O $HOME/Bear/CMakeLists.txt
@@ -213,21 +213,21 @@ function bearinstall {
 }
 
 function neovimhelp {
-  echo "Vim has been upgraded to NeoVim. Simply type 'vim' (or 'nvim') to use it."
-  echo "Please inspect ~/.config/nvim/init.vim to learn about new commands."
-  echo "In order to set YCM (the vim IDE plugin) up, please run the following command:"
-  vecho "make clean; bear make"
-  echo "in the directory you're using for code editing. This generates a database"
-  echo "Vim uses to provide code completion, etc."
+  vecho "Vim has been upgraded to NeoVim. Simply type 'vim' (or 'nvim') to use it."
+  vecho "Please inspect ~/.config/nvim/init.vim to learn about new commands."
+  vecho "In order to set YCM (the vim IDE plugin) up, please run the following command:"
+  recho "make clean; bear make"
+  vecho "in the directory you're using for code editing. This generates a database"
+  vecho "Vim uses to provide code completion, etc."
 }
 
 function tmuxhelp {
-  echo "Tmux has been configured. Please inspect ~/.tmux.conf to learn more."
+  vecho "Tmux has been configured. Please inspect ~/.tmux.conf to learn more."
 }
 
 function zshhelp {
-  echo "ZSH has been set up, and set as your default shell. To go back to bash,"
-  echo "delete the first line from .bashrc."
+  vecho "ZSH has been set up, and set as your default shell. To go back to bash,"
+  vecho "delete the first line from .bashrc."
 }
 
 function restore {
@@ -248,14 +248,46 @@ function restore {
 }
 
 function otherhelp {
-  echo "The following additional applications are now available:"
-  echo "pv - Pipe Viewer"
-  echo "bear - Build EAR"
-  echo "clang - C/C++ compiler, static analysis tool, and linter"
-  echo "nvim - An alias for NeoVim"
+  vecho "The following additional applications are now available:"
+  recho "pv - Pipe Viewer"
+  recho "bear - Build EAR"
+  recho "clang - C/C++ compiler, static analysis tool, and linter"
+  recho "nvim - An alias for NeoVim"
+}
+
+function usage {
+  echo "Installs a bunch of stuff on your Myth machine, including:"
+  echo "- clang"
+  echo "- pv"
+  echo "- bear"
+  echo "- Oh My ZSH, including:"
+  echo "  - zsh-autosuggestions"
+  echo "  - zsh-completions"
+  echo "  - zs-syntax-highlighting"
+  echo "- NeoVim, with the following plugins:"
+  echo "  - Vundle"
+  echo "  - delimitMate"
+  echo "  - YouCompleteMe"
+  echo "  - vim-better-whitespace"
+  echo "  - vim-airline"
+  echo "  - ctrlp.vim"
+  echo "  - vim-multiple-cursors"
+  echo "  - NERDtree"
+  echo "  - vim-surround"
+  echo "  - vim-indent-guides"
+  echo "  - chromatica"
+  echo "- gdbdash"
+  echo "- ...and a tmux configuration file."
+  echo "Usage: ./upgrade.sh [-f] [-r] [-s] [-u]"
+  echo "-f : Force upgrade, even if it would overwrite a backup."
+  echo "-r : Backup current state, then restore."
+  echo "-u : Delete all files and folders used by this application WITHOUT backing up, then exit."
+  echo "-s : Skip backup"
+  exit -1
 }
 
 function main {
+  cd $HOME
   if [[ "$BACKUP" = true ]]; then
     backup
   else
@@ -278,10 +310,14 @@ function main {
 
   echo ""
 
+  secho "==== Done! ===="
+
   neovimhelp
   tmuxhelp
   zshhelp
   otherhelp
+
+  exec zsh
 }
 
 OVERWRITE_BACKUP=false
@@ -304,12 +340,7 @@ while getopts ":frsu" opt; do
       UNINSTALL=true
       ;;
     \? )
-      echo "Usage: ./upgrade.sh [-f] [-r] [-s] [-u]";
-      echo "-f : Force upgrade, even if it would overwrite a backup.";
-      echo "-r : Backup current state, then restore.";
-      echo "-u : Delete all files and folders used by this application WITHOUT backing up, then exit."
-      echo "-s : Skip backup";
-      exit -1;
+      usage
       ;;
   esac
 done

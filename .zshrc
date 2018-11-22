@@ -107,3 +107,5 @@ function cdm() {
     cd -P -- "$1"
 }
 
+autoload -U compinit && compinit
+alias vim=nvim
