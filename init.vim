@@ -191,7 +191,7 @@ highlight YcmWarningSection cterm=underline ctermfg=227 ctermbg=233
 highlight SignColumn ctermbg=232
 
 " == Chromatica Colors == "
-highlight chromaticaLinkage ctermfg=99
+highlight chromaticaLinkage ctermfg=34
 
 " == Ctrl+P Colors == "
 highlight Pmenu ctermfg=15 ctermbg=235
