@@ -8,18 +8,23 @@ FLIGHTGREEN='\e[92m'
 FLIGHTRED='\e[91m'
 FLIGHTCYAN='\e[96m'
 
+# "Section Echo" -- Echoes the passed-in text
+# in light green with a grey backgroudn.
 function secho {
   echo -e "$BG$FLIGHTGREEN$@$RESET"
 }
 
+# "Verbose Echo" -- Echoes the passed-in text in light green.
 function vecho {
   echo -e "$FLIGHTGREEN$@$RESET"
 }
 
+# "Warning Echo" -- Echoes the passed-in text in light red.
 function wecho {
   echo -e "$FLIGHTRED$@$RESET"
 }
 
+# "Restore Echo" -- Echoes the passed-in text in light cyan.
 function recho {
   echo -e "$FLIGHTCYAN$@$RESET"
 }
@@ -30,8 +35,6 @@ function clean {
   rm -rf $HOME/.local
   vecho "+ Removing ZSH"
   rm -rf $HOME/.oh-my-zsh
-  vecho "+ Removing dein"
-  rm -rf $HOME/.cache/dein
   vecho "+ Removing pv"
   rm -rf $HOME/pv
   vecho "+ Removing ycm"
@@ -113,7 +116,7 @@ function setzsh {
 }
 
 function installpip {
-  secho "==== Installing Python3 pip + NeoVim plugin ===="
+  secho "==== Installing Python2 pip + Python3 pip + NeoVim plugins ===="
   vecho "+ Downloading get-pip.py"
   wget -q --show-progress "https://bootstrap.pypa.io/get-pip.py" -O get-pip.py
   vecho "+ Installing pip"
@@ -133,7 +136,8 @@ function vundle {
 
   secho "==== Installing vim Plugins ===="
   vecho "+ Installing (please wait, this may take a while!)"
-  $HOME/.local/bin/nvim +PluginInstall +qall
+  echo "Installing vim plugins (please wait, this may take a long time!) | \
+    "$HOME/.local/bin/nvim +PluginInstall +qall
   $HOME/.local/bin/nvim +UpdateRemotePlugins +qall
 }
 
@@ -243,6 +247,14 @@ function restore {
   recho "+ Done!"
 }
 
+function otherhelp {
+  echo "The following additional applications are now available:"
+  echo "pv - Pipe Viewer"
+  echo "bear - Build EAR"
+  echo "clang - C/C++ compiler, static analysis tool, and linter"
+  echo "nvim - An alias for NeoVim"
+}
+
 function main {
   if [[ "$BACKUP" = true ]]; then
     backup
@@ -269,6 +281,7 @@ function main {
   neovimhelp
   tmuxhelp
   zshhelp
+  otherhelp
 }
 
 OVERWRITE_BACKUP=false
