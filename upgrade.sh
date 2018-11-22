@@ -99,7 +99,7 @@ function ohmyzsh {
   printf "\n\nexit\n\n" | sh -c "$(wget -q --show-progress https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   vecho "+ Installing .zshrc"
   rm $HOME/.zshrc
-  wget -q --show-progress "https://gist.githubusercontent.com/jdkula/1dfdf09a505bb8218688811e487aaa53/raw/e480296fea8246e353bd0d5f26cb2ee0496ee7b4/.zshrc" -O $HOME/.zshrc
+  wget -q --show-progress "https://raw.githubusercontent.com/jdkula/dotfiles/master/.zshrc" -O $HOME/.zshrc
 }
 
 function setzsh {
@@ -176,7 +176,7 @@ function neovim {
   vecho "+ Installing NeoVim"
   chmod +x $HOME/.local/bin/nvim
   mkdir -p $HOME/.config/nvim
-  wget -q --show-progress "https://gist.githubusercontent.com/jdkula/8d4d3ba5899ca678daafdfe24863ad81/raw/71e7ede4bc73bca154e3b23bf2501d1e73b3801c/init.vim" -O $HOME/.config/nvim/init.vim
+  wget -q --show-progress "https://raw.githubusercontent.com/jdkula/dotfiles/master/init.vim" -O $HOME/.config/nvim/init.vim
   echo -e '\n\n" ==== Added by upgrade.sh ====' >> ~/.config/nvim/init.vim
   echo -e "\nlet g:chromatica#libclang_path = '$HOME/.local/lib/libclang.so'" >> ~/.config/nvim/init.vim
   echo -e "\nlet g:chromatica#global_args = ['-isystem$HOME/.local/lib/clang/7.0.0/include']" >> ~/.config/nvim/init.vim
@@ -186,7 +186,7 @@ function neovim {
 function settmux {
   secho "==== Installing tmux Configuration ===="
   vecho "+ Downloading configuration"
-  wget -q --show-progress "https://gist.githubusercontent.com/jdkula/4ca2b5d244278defe4be1b3eaf60c143/raw/a728da13bfb6f0d86c80e6565e962c067e40374c/.tmux.conf" -O $HOME/.tmux.conf
+  wget -q --show-progress "https://raw.githubusercontent.com/jdkula/dotfiles/master/.tmux.conf" -O $HOME/.tmux.conf
 }
 
 function bearinstall {
@@ -196,7 +196,7 @@ function bearinstall {
   cd Bear
   vecho "+ Building Bear"
   rm CMakeLists.txt
-  wget -q --show-progress "https://gist.githubusercontent.com/jdkula/ec36526d4c4ccaec70caf4a2ca96974c/raw/bc7fc3ff9a15b192a07d76a8da3dbf60a45af029/CMakeLists.txt" -O $HOME/Bear/CMakeLists.txt
+  wget -q --show-progress "https://raw.githubusercontent.com/jdkula/dotfiles/master/upgradeFiles/CMakeLists.txt" -O $HOME/Bear/CMakeLists.txt
   cmake .
   make all
   vecho "+ Installing Bear"
