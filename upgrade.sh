@@ -265,7 +265,7 @@ function usage {
   echo "- Oh My ZSH, including:"
   echo "  - zsh-autosuggestions"
   echo "  - zsh-completions"
-  echo "  - zs-syntax-highlighting"
+  echo "  - zsh-syntax-highlighting"
   echo "- NeoVim, with the following plugins:"
   echo "  - Vundle"
   echo "  - delimitMate"
