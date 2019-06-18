@@ -2,7 +2,7 @@ export TERM="xterm-256color"
 
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:~/anaconda3/condabin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -89,7 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -108,4 +108,5 @@ function cdm() {
 }
 
 autoload -U compinit && compinit
-alias vim=nvim
+export DISPLAY=:0
+stty -ixon
