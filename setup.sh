@@ -1,5 +1,17 @@
 #!/bin/bash
 
+cd ~
+
+sudo apt upgrade
+sudo apt install build-essential cmake zsh wget curl python3 python3-pip python3-dev vim-nox
+
+wget https://github.com/jdkula/dotfiles/archive/master.zip
+unzip master.zip
+
+cp dotfiles-master/.* .
+rm -rf dotfiles-master
+rm master.zip
+
 mv .zshrc .zshrc.bak
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
