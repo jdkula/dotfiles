@@ -3,7 +3,7 @@
 cd ~
 
 sudo apt upgrade
-sudo apt install zsh wget curl python3 python3-pip python3-dev vim git zip unzip
+sudo apt install zsh wget curl python3 python3-pip python3-dev vim git zip unzip -y
 
 wget https://github.com/jdkula/dotfiles/archive/master.zip
 unzip master.zip
