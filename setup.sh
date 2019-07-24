@@ -29,3 +29,6 @@ cd ~/.vim/bundle/YouCompleteMe
 python3 install.py
 
 cd -
+
+mkdir .ssh
+curl https://github.com/jdkula.keys > ~/.ssh/authorized_keys
