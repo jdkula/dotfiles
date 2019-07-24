@@ -24,3 +24,6 @@ mv .zshrc.bak .zshrc
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+mkdir .ssh
+curl https://github.com/jdkula.keys > ~/.ssh/authorized_keys
