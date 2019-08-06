@@ -11,6 +11,7 @@ unzip master.zip
 cp dotfiles-master/.* .
 rm -rf dotfiles-master
 rm master.zip
+rm .vimrc-light
 
 mv .zshrc .zshrc.bak
 
