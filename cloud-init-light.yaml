@@ -18,7 +18,6 @@ users:
     primary_group: jdkula
     groups: sudo
     shell: /usr/bin/zsh
-    sudo: [ 'ALL=(ALL) NOPASSWD:ALL' ]
 runcmd:
   - sudo -i -u jdkula wget "https://raw.githubusercontent.com/jdkula/dotfiles/master/setup-light.sh" -O \$HOME/setup-light.sh
   - sudo -i -u jdkula chmod +x \$HOME/setup-light.sh
