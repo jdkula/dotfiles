@@ -2,7 +2,8 @@
 
 cd ~
 
-sudo apt install build-essential cmake zsh wget curl python3 python3-pip python3-dev vim-nox git zip unzip -y
+#should have these packages installed
+#sudo apt install build-essential cmake zsh wget curl python3 python3-pip python3-dev vim-nox git zip unzip -y
 
 wget https://github.com/jdkula/dotfiles/archive/master.zip
 unzip master.zip
