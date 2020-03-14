@@ -2,7 +2,6 @@
 
 cd ~
 
-sudo apt upgrade
 sudo apt install zsh wget curl python3 python3-pip vim git zip unzip -y
 
 wget https://github.com/jdkula/dotfiles/archive/master.zip
