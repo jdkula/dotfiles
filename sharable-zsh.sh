@@ -2,8 +2,7 @@
 
 cd ~
 
-#should have these packages installed
-#sudo apt install zsh wget curl python3 python3-pip vim git zip unzip -y
+#should have these packages installed: zsh git curl
 
 mv ~/.zshrc ~/.zshrc.old-bak
 
