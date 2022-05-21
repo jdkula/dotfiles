@@ -60,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   command-not-found
-  zsh-syntax-highlighting
+  fast-syntax-highlighting
   zsh-autosuggestions
   zsh-completions
 )

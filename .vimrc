@@ -11,9 +11,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Automatically matches parens, brackets, braces, etc.
 Plugin 'Raimondi/delimitMate'
 
-" Provides (semantic) autocomplete, C linting, etc.
-Plugin 'Valloric/YouCompleteMe'
-
 " Identifies and highlights superfluous whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
@@ -82,6 +79,9 @@ set nowrap
 
 " Move around Vim with the mouse!
 set mouse=a
+
+" Allow us to backspace
+set backspace=indent,eol,start
 
 
 " ==== Chromatica Options ==== "
@@ -195,4 +195,3 @@ highlight PmenuSel ctermfg=15 ctermbg=24
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=232
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=233
 highlight ExtraWhitespace ctermbg=52
-
